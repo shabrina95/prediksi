@@ -1,34 +1,39 @@
 package algen;
 
 public class Individual {
-    private int[] chromosome;
+    private double[] chromosome;
     private double fitness = -1;
-    public Individual(int[] chromosome) {
-    // Create individual chromosome
+    public Individual(double[] chromosome) {
+        // Create individual chromosome
         this.chromosome = chromosome;
     }
-    public Individual(int chromosomeLength) {
-        this.chromosome = new int[chromosomeLength];
+    public Individual(double chromosomeLength) {
+        this.chromosome = new double[(int) chromosomeLength];
         for (int gene = 0; gene < chromosomeLength; gene++) {
-            if (0.5 < Math.random()) {
-                this.setGene(gene, 1);
-            } else {
-                this.setGene(gene, 0);
+            double random = Math.random();
+            while (random > 1){
+                random = generateRandomGene(random);
             }
+            this.setGene(gene, random);
         }
     }
 
-    public int[] getChromosome() {
+    public double generateRandomGene(double random){
+        random = Math.random();
+        return random;
+    }
+
+    public double[] getChromosome() {
         return this.chromosome;
     }
-    public int getChromosomeLength() {
+    public double getChromosomeLength() {
         return this.chromosome.length;
     }
-    public void setGene(int offset, int gene) {
-        this.chromosome[offset] = gene;
+    public void setGene(double offset, double gene) {
+        this.chromosome[(int) offset] = gene;
     }
-    public int getGene(int offset) {
-        return this.chromosome[offset];
+    public double getGene(double offset) {
+        return this.chromosome[(int) offset];
     }
     public void setFitness(double fitness) {
         this.fitness = fitness;
@@ -39,7 +44,7 @@ public class Individual {
     public String toString() {
         String output = "";
         for (int gene = 0; gene < this.chromosome.length; gene++) {
-            output += this.chromosome[gene];
+            output += this.chromosome[gene]+" ";
         }
         return output;
     }

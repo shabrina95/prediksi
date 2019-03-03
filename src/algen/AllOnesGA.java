@@ -1,11 +1,20 @@
 package algen;
 
+import java.util.Scanner;
+
 public class AllOnesGA {
     public static void main(String[] args) {
         // Create GA object
-        GeneticAlgorithm ga = new GeneticAlgorithm(10, 0.01, 0.95, 0);
+        int popultaionSize;
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Masukkan jumlah populasi = ");
+        popultaionSize = sc.nextInt();
+
+        GeneticAlgorithm ga = new GeneticAlgorithm(popultaionSize, 0.01, 0.95, 0);
         // Initialize population
-        Population population = ga.initPopulation(7);
+        Population population = ga.initPopulation(5);
 
         // The following is the new code you should be adding:
         ga.evalPopulation(population);
