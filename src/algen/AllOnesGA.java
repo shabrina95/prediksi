@@ -3,9 +3,9 @@ package algen;
 public class AllOnesGA {
     public static void main(String[] args) {
         // Create GA object
-        GeneticAlgorithm ga = new GeneticAlgorithm(50, 0.01, 0.95, 0);
+        GeneticAlgorithm ga = new GeneticAlgorithm(10, 0.01, 0.95, 0);
         // Initialize population
-        Population population = ga.initPopulation(5);
+        Population population = ga.initPopulation(7);
 
         // The following is the new code you should be adding:
         ga.evalPopulation(population);
